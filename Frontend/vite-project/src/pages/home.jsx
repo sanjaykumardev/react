@@ -37,7 +37,7 @@ const [slot ,setSlot] = useState(" ");
         </div> */}
       <section>
       <div name="left"className="bg-blue-500 text-white p-4">
-      <h2>Personal Information</h2>  
+      <h2 className="text-3xl text-center">Personal Information</h2>  
       <h3>FullName</h3>  
         <input 
         type="text" 
