@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <>
       <div className=" sticky  md:sticky md:top-0 bg-black flex items-center justify-between  md:px-[200px] py-4   border-bottom-2  md:w-[full]">
-        <h1 className=" text-  font-extrabold px-0 text-white"><Link to="/"> Blog Market</Link></h1>
+        <h1 className=" text-  font-extrabold px-0 text-white"><Link to="/">COVID-19 FORM</Link></h1>
         <div className="flex justify-center w-1/2 items-center content-between text-sm  bg-white  rounded-full">
           {/* <BsSearch className='h-10 w-20 py-2  text-black md:text-black ' /> */}
           <input className=" outline-none rounded-full md:px-[6px] w-full " placeholder='Search of post' type="text" />
