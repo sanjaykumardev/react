@@ -46,7 +46,7 @@ const register = () => {
   return (
     <div>
        <div>
-         <h3>Register</h3>
+         <h3 className='test-6xl text-red-500 text-center'>Register</h3>
        </div>
       <form onSubmit={(e) => RegisterSubmit(e)}>
         <label>

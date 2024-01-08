@@ -1,11 +1,11 @@
 import react from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import {useLocation, useState} from 'react'
+import { useState} from 'react'
 import axios  from "axios" 
 
 
-
+// const location=useLocation();
 
 // const Datahandle = 
 
@@ -27,14 +27,14 @@ const [slot ,setSlot] = useState(" ");
 
 
 
-  const location=useLocation();
+  
   return(
      <>
    <Navbar/>
       <main>
-        <div>
+        {/* <div>
         <h1>Hello {location.state.id} and welcome to the home</h1>
-        </div>
+        </div> */}
       <section>
       <div name="left" className='text-l'>
       <h2>Personal Information</h2>  
