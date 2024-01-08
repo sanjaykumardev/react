@@ -31,12 +31,12 @@ const [slot ,setSlot] = useState(" ");
   return(
      <>
    <Navbar/>
-      <main>
+      <main className="bg-blue-500 text-white p-4">
         {/* <div>
         <h1>Hello {location.state.id} and welcome to the home</h1>
         </div> */}
       <section>
-      <div name="left"className="bg-blue-500 text-white p-4">
+      <div name="left">
       <h2 className="text-3xl text-center">Personal Information</h2>  
       <h3>FullName</h3>  
         <input 
