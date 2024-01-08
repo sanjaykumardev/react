@@ -51,7 +51,7 @@ onChange={(e) => setPassword(e.target.value)}
 <button type="submit">Login</button>
 </form>
 
-{error && <h4 className='text-red-500 '>something went wrong</h4>}
+{error && <h4 className='text-blue-700 '>something went wrong</h4>}
 <p>
 <span className="font-bold">Create New here?</span>
 <span className="cursor-pointer text-gray-700 pl-2">
