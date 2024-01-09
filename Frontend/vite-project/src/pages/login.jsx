@@ -36,7 +36,7 @@ function login() {
        <h3 className='text-white'>login</h3>
     </div>
 
-    <form  className='h-[80vh]  bg-blue-300 ' onSubmit={(e) => handleSubmit(e)}>
+    <form   className='h-[80vh]  bg-blue-300 ' onSubmit={(e) => handleSubmit(e)}>
     <div className=' w-[1/2] '>
     <input
       type='email'
