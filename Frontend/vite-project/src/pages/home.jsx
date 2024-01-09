@@ -90,24 +90,24 @@ const [slot ,setSlot] = useState(" ");
       </div>
 
       <div name=" vaccination details">
-    <h2>vaccination details</h2>  
+    <h2>Vaccination Details</h2>  
     <h3>Time</h3>  
-      <input 
+      <input className='bg-black text-white-500'
       type="time" 
       placeholder='time'  
       onChange={(e)=>setTime(e.target.value)}/> 
     <h3>Slot</h3>  
-      <input type="date"  
+      <input className='bg-black text-white-500' type="date"  
       placeholder='slot'  
       onChange={(e)=>setSlot(e.target.value)} 
       />
 
-    <h3>avability check</h3>  
+    <h3>Avability Check</h3>  
      <p>COVID Vaccin: Covacccin </p>
-     {isProductAvailable ? <p> Status: <span className='text-green-700'>Avalilable </span> </p> : <p>Status: Not Avalilable </p>} 
+     {isProductAvailable ? <p> Status: <span className='text-green-900'>Avalilable </span> </p> : <p>Status: Not Avalilable </p>} 
       </div>
       <div>
-        <button >Submit</button>
+        <button className='bg-black text-white-500'>Submit</button>
       </div>
       </section>
       </main>

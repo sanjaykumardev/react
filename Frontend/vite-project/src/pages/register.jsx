@@ -3,6 +3,8 @@ import {useNavigate} from 'react-router-dom'
 import {Link} from 'react'
 import {URL} from '../url'
 import axios from 'axios'
+import Navbar2 from '../components/Navbar2'
+import Footer from '../components/Footer'
 
 
 const register = () => {
@@ -44,11 +46,13 @@ const register = () => {
   };
 
   return (
-    <div>
-       <div>
+    
+    <div >
+       <Navbar2/>
+       <div >
          <h3 className='test-6xl text-red-500 text-center'>Register</h3>
        </div>
-      <form >
+      <form  >
         <label>
           First Name:
           <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
@@ -73,6 +77,7 @@ const register = () => {
       </form>
 
       {error && <p> register succfully </p>}
+      <Footer/>
     </div>
   );
 };

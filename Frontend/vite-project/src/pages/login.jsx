@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 import { URL } from '../url'
+import Navbar2 from "../components/Navbar2"
+import Footer from '../components/Footer'
+
 
 function login() {
   const [gmail, setGmail] = useState(" ");
@@ -27,38 +30,40 @@ function login() {
 
   return (
     <>
-<div>
-<div>
-<h3 className='text-white'>login</h3>
+    <Navbar2/>
+<div className='md:px-[200px] w-[1/2] px-4 py-4  pz-5  '>
+    <div>
+       <h3 className='text-white'>login</h3>
+    </div>
+
+    <form  className='h-[80vh]  bg-blue-300 ' onSubmit={(e) => handleSubmit(e)}>
+    <div className=' w-[1/2] '>
+    <input
+      type='email'
+      placeholder='email'
+      required
+      onChange={(e) => setGmail(e.target.value)}
+    />
+    <input
+      type='password'
+      placeholder='password'
+      required
+      onChange={(e) => setPassword(e.target.value)}
+    />
 </div>
-
-<form onSubmit={(e) => handleSubmit(e)}>
-<div>
-<input
-type='email'
-placeholder='email'
-required
-onChange={(e) => setGmail(e.target.value)}
-/>
-<input
-type='password'
-placeholder='password'
-required
-onChange={(e) => setPassword(e.target.value)}
-
-/>
-</div>
-<button type="submit">Login</button>
-</form>
-
-{error && <h4 className='text-blue-700 '>something went wrong</h4>}
+      <button type="submit">Login</button>
+      {error && <h4 className='text-blue-700 '>something went wrong</h4>}
 <p>
 <span className="font-bold">Create New here?</span>
 <span className="cursor-pointer text-gray-700 pl-2">
 <Link to='/Register'>Register</Link>
 </span>
 </p>
+   </form>
+
+
 </div>
+<Footer/>
 </>
   )
 }
