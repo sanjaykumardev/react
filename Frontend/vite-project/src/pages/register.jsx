@@ -52,7 +52,7 @@ const register = () => {
        <div >
          <h3 className='test-6xl text-red-500 text-center'>Register</h3>
        </div>
-      <form  >
+      <form onSubmit={(e) => RegisterSubmit(e)} >
         <label>
           First Name:
           <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
@@ -73,7 +73,7 @@ const register = () => {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <br />
-        <button className=' bg-black  text-white' onSubmit={(e) => RegisterSubmit(e)} type="submit">Submit</button>
+        <button className=' bg-black  text-white'  type="submit">Submit</button>
       </form>
 
       {error && <p> register succfully </p>}
