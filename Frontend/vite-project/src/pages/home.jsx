@@ -57,7 +57,7 @@ const [isAuthenticated, setIsAuthenticated] = useState(true);
      <main>
      <div>
       {isAuthenticated ? (
-        <button onClick={logout}>Logout</button>
+        <button onClick={logout} >Logout</button>
       ) : (
         <p>User is already logged out</p>
       )}
