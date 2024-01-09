@@ -25,6 +25,7 @@ const register = () => {
         lastname,
         gmail,
         password,
+        
       });
       console.log(res)
       setFirstname(" ");

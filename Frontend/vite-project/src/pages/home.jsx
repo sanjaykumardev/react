@@ -5,9 +5,9 @@ import { useState} from 'react'
 import axios  from "axios" 
 
 
-// const location=useLocation();
 
-// const Datahandle = 
+
+
 
 
 const isProductAvailable = true;
@@ -27,14 +27,11 @@ const [slot ,setSlot] = useState(" ");
 
 
 
-  
+
   return(
      <>
    <Navbar/>
       <main className="bg-blue-500 text-white p-4">
-        {/* <div>
-        <h1>Hello {location.state.id} and welcome to the home</h1>
-        </div> */}
       <section>
       <div name="left">
       <h2 className="text-3xl text-center">Personal Information</h2>  

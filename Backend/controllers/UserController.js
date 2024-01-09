@@ -66,8 +66,14 @@ const  loginuser = async(req,res)=>{
     res.status(401);
     console.log("email and password is not valid ")
   }
-  // res.json({message:"register the user"});
+  res.json({message:"register the user"});
   };
+
+  //privite client
+  const privateUser =  async(req,res) =>{   
+    res.json({message:"register the user"});
+  };
+  
  
 
-module.exports = {registeruser ,loginuser }
+module.exports = {registeruser ,loginuser ,privateUser}
