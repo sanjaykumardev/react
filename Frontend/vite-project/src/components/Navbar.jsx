@@ -1,20 +1,11 @@
 import { Link } from 'react-router-dom'
-// import { BsSearch } from 'react-icons/bs'
-// import {FaBars} from 'react-icons/fa'
+
 import {  useState } from 'react'
-// import Menu from './Menu'
-// import { UserContext } from '../context/UserContext'
+
 
 
 const Navbar = () => {
 
-  // const [menu,setMenu] = useState(false) 
-
-  // const showMenu = ()=>{
-  //   setMenu(!menu)
-  // }
-
-  // const {user} = useContext(UserContext)
 
   return (
     <>

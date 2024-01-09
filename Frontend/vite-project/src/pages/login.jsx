@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState ,useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import axios from "axios"
+import Axios from "axios"
 import { useNavigate } from 'react-router-dom';
 import { URL } from '../url'
 import Navbar2 from "../components/Navbar2"
 import Footer from '../components/Footer'
+
 
 
 function login() {
@@ -13,23 +14,29 @@ function login() {
   const [error, setError] = useState(false)
   const navigator = useNavigate()
 
+
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("good",e);
     try {
-      const res = await axios.post("http://localhost:8000/api/user/login", { gmail, password })
+      const res = await Axios.post("http://localhost:8000/api/user/login", { gmail, password })
+      const token = res.data.Token;
+      console.log('Token:', token);
+      console.error('Axios Error:', error);
       setGmail(" ");
       setPassword(" ");
-      
+     
       setGmail(res.data.email)
       setPassword(res.data.password)
       setError(false)
-      navigator ( "/",{state:{id:gmail}})
-    } catch (err) {
+      navigator ( "/")
+    } catch (error) {
       setError(true)
-      console.log(err)
+      console.error('Login failed:', error.response.data.error);
     }
-  }
+  };
+ 
 
   return (
     <>

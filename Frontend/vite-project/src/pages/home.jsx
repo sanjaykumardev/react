@@ -1,7 +1,8 @@
 import react from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import { useState} from 'react'
+import { useState ,Link} from 'react'
+
 import axios  from "axios" 
 
 
@@ -10,11 +11,34 @@ import axios  from "axios"
 
 
 
-const isProductAvailable = true;
+
 function home(){
 
+  const logout = async () => {
+    
+    try {
+      // Assuming you have the user's credentials available (gmail and password)
+      const response = await axios.delete("http://localhost:8000/api/user/logout", {
+  
+      });
+      console.log(response )
 
-  const [name ,setName] = useState(" ");
+      if (response.status === 200) {
+        console.log('Logout successful');
+     
+        setIsAuthenticated(false);
+      } else {
+        console.log('Logout failed');
+   
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+      // Handle the error, e.g., show an error message to the user
+    }
+  };
+
+
+const [name ,setName] = useState(" ");
 const [age ,setAge] = useState(" ");
 const [Adhare ,setAdhare] = useState(" ");
 const [state ,setState] = useState(" ");
@@ -25,14 +49,22 @@ const [address,setAddress] = useState(" ");
 const [time ,setTime] = useState(" ");
 const [slot ,setSlot] = useState(" ");
 
-
-
-
+    
+const isProductAvailable = true;
+const [isAuthenticated, setIsAuthenticated] = useState(true);
   return(
      <>
-   <Navbar/>
-      <main className="bg-blue-500 text-white p-4">
-      <section>
+     <main>
+     <div>
+      {isAuthenticated ? (
+        <button onClick={logout}>Logout</button>
+      ) : (
+        <p>User is already logged out</p>
+      )}
+    </div>
+      {/* // Personal imformation */}
+      <div className="bg-blue-500 text-white p-4">
+      <div>
       <div name="left">
       <h2 className="text-3xl text-center">Personal Information</h2>  
       <h3>FullName</h3>  
@@ -106,9 +138,11 @@ const [slot ,setSlot] = useState(" ");
       <div>
         <button className='bg-black text-white-500'>Submit</button>
       </div>
-      </section>
-      </main>
+      </div>
+      </div>
    <Footer/>
+   
+     </main>
      </>
   )
 }
