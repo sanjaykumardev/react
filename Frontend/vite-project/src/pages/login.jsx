@@ -18,6 +18,8 @@ function login() {
     console.log("good",e);
     try {
       const res = await axios.post("http://localhost:8000/api/user/login", { gmail, password })
+      setGmail(" ");
+      setPassword(" ");
       setGmail(res.data.email)
       setPassword(res.data.password)
       setError(false)

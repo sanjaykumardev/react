@@ -1,21 +1,22 @@
 const express = require("express");
 const connectDB = require("./configs/dbConnections")
 const app = express();
-const dotenv  = require("dotenv")
+const dotenv = require("dotenv")
 const usercontact = require("./routes/user")
-const cors  = require("cors");
+const cors = require("cors");
 dotenv.config();
 
-const port =  process.env.PORT || 5000
+const port = process.env.PORT || 5000
 // middleware
 app.use(express.json());
 app.use(cors({
-  option:['http://localhost:5173']
+  option: ['http://localhost:5173'],
+  credentials: true,
 }))
 app.use(express.urlencoded({ extended: true }));
 
 //routes
-app.use("/api/user" ,usercontact);
+app.use("/api/user", usercontact);
 
 // Enable CORS for all origins and methods
 
@@ -28,7 +29,7 @@ connectDB();
 // })
 
 
-app.listen(port, ()=>{
+app.listen(port, () => {
   console.log(`the server is connected ${port}`)
 });
 
