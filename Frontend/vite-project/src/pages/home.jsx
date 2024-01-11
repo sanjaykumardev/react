@@ -13,23 +13,27 @@ import axios  from "axios"
 
 
 function home(){
-
+  const [authToken, setAuthToken] = useState('')
   const logout = async () => {
     
     try {
       // Assuming you have the user's credentials available (gmail and password)
       const response = await axios.delete("http://localhost:8000/api/user/logout", {
-  
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
       });
       console.log(response )
 
       if (response.status === 200) {
         console.log('Logout successful');
-     
+    
         setIsAuthenticated(false);
+
       } else {
         console.log('Logout failed');
-   
+        setAuthToken('');
+
       }
     } catch (error) {
       console.error('Error during logout:', error);

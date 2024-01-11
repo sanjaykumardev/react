@@ -5,15 +5,25 @@ import { useNavigate } from 'react-router-dom';
 import { URL } from '../url'
 import Navbar2 from "../components/Navbar2"
 import Footer from '../components/Footer'
-
+import { validEmail, validPassword } from '../components/validation';
 
 
 function login() {
   const [gmail, setGmail] = useState(" ");
   const [password, setPassword] = useState(" ");
-  const [error, setError] = useState(false)
+  // const [error, setError] = useState(false)
+  const [emailErr, setEmailErr] = useState(false);
+  const [pwdError, setPwdError] = useState(false);
   const navigator = useNavigate()
 
+  const validate = () => {
+    if (!validEmail.test(gmail)) {
+       setEmailErr(true);
+    }
+    if (!validPassword.test(password)) {
+       setPwdError(true);
+    }
+ };
 
  
   const handleSubmit = async (e) => {
@@ -29,10 +39,10 @@ function login() {
      
       setGmail(res.data.email)
       setPassword(res.data.password)
-      setError(false)
+      // setError(false)
       navigator ( "/")
     } catch (error) {
-      setError(true)
+      // setError(true)
       console.error('Login failed:', error.response.data.error);
     }
   };
@@ -51,18 +61,19 @@ function login() {
     <input
       type='email'
       placeholder='email'
-      required
+      value={gmail}
       onChange={(e) => setGmail(e.target.value)}
     />
     <input
       type='password'
       placeholder='password'
-      required
+      value={password}
       onChange={(e) => setPassword(e.target.value)}
     />
 </div>
-      <button type="submit">Login</button>
-      {error && <h4 className='text-blue-700 '>something went wrong</h4>}
+      <button onClick={validate} type="submit">Login</button>
+      {emailErr && <p>Your email is invalid</p>}
+         {pwdError && <p>Your password is invalid</p>}
 <p>
 <span className="font-bold">Create New here?</span>
 <span className="cursor-pointer text-gray-700 pl-2">
