@@ -67,7 +67,7 @@ const  loginuser = async(req,res)=>{
     res.status(500).json({ error: 'Internal server error' });
   }
 
-  // res.json({message:"register the user"});
+  res.json({message:"register the user"});
   };
 
   // logout
