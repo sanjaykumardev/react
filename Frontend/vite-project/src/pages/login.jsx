@@ -55,38 +55,40 @@ function login() {
     <div>
        <h3 className='text-white'>login</h3>
     </div>
-
-    <form   className='h-[80vh]  bg-blue-300 ' onSubmit={(e) => handleSubmit(e)}>
-    <div className=' w-[1/2] '>
-    <input
-      type='email'
-      placeholder='email'
-      value={gmail}
-      onChange={(e) => setGmail(e.target.value)}
-    />
-    <input
-      type='password'
-      placeholder='password'
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-    />
-</div>
-      <button onClick={validate} type="submit">Login</button>
-      {emailErr && <p>Your email is invalid</p>}
+    <div>
+      <form onSubmit={(e)=> handleSubmit(e)}>
+      <input
+            type="email"
+            placeholder="Email"
+            value={gmail}
+            onChange={(e) => setGmail(e.target.value)}
+         />
+         <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+         />
+         <div>
+            <button onClick={validate}><Link to='/formpage'>Register</Link>Login</button> :  {emailErr && <p>Your email is invalid</p>}
          {pwdError && <p>Your password is invalid</p>}
-<p>
-<span className="font-bold">Create New here?</span>
-<span className="cursor-pointer text-gray-700 pl-2">
-<Link to='/Register'>Register</Link>
-</span>
-</p>
-   </form>
+         </div>
+        
+     
+      </form>
+      </div> 
 
+      <p>
+      <span className="font-bold">Create New here?</span>
+      <span className="cursor-pointer text-gray-700 pl-2">
+      <Link to='/Register'>Register</Link>
+      </span>
+      </p>
 
-</div>
+  </div>
 <Footer/>
 </>
-  )
-}
+  );
+};
 
 export default login;
