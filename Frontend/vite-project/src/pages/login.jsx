@@ -70,7 +70,7 @@ function login() {
             onChange={(e) => setPassword(e.target.value)}
          />
          <div>
-            <button onClick={validate}><Link to='/formpage'>Register</Link>Login</button> :  {emailErr && <p>Your email is invalid</p>}
+            <button onClick={validate}><Link to='/formpage'></Link>Login</button> {emailErr && <p>Your email is invalid</p>}
          {pwdError && <p>Your password is invalid</p>}
          </div>
         

@@ -22,7 +22,9 @@ app.use(cookieParser);
 
 //routes
 app.use("/api/user", usercontact);
-
+app.get("/", (req,res)=>{
+  res.json("<h1> Server is working<h1/>")
+})
 
 
 // connection to database

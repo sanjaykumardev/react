@@ -16,9 +16,9 @@ const register = () => {
   const navigator= useNavigate();
 
  
-  const RegisterSubmit = async(e) => {
+  async function RegisterSubmit(e){
     e.preventDefault(); 
-    console.log("Form submitted!",e);
+   
     try {
       const res = await axios.post("http://localhost:8000/api/user/register", {
         firstname,
@@ -28,10 +28,10 @@ const register = () => {
         
       });
       console.log(res)
-      setFirstname(" ");
-      setLastname(" ");
-      setGmail(" ");
-      setPassword(" ");
+      // setFirstname(" ");
+      // setLastname(" ");
+      // setGmail(" ");
+      // setPassword(" ");
 
       setFirstname(res.data.firstname);
       setLastname(res.data.lastname);
@@ -55,7 +55,7 @@ const register = () => {
          <h3 className='test-6xl text-red-500 text-center'>Register</h3>
        </div>
        <div className=' display-flex justify-center '>
-       <form onSubmit={(e) => RegisterSubmit(e)} >
+       <form  >
         <label className="block mb-2 text-sm font-medium text-gray-900 ">
           First Name:
           <input type="text" className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-200px p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder=''value={firstname} onChange={(e) => setFirstname(e.target.value)} />
@@ -76,7 +76,7 @@ const register = () => {
           <input className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-200px p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' type="password" placeholder='' value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <br />
-        <button className=' bg-black  text-white'  type="submit">Submit</button>
+        <button className=' bg-black  text-white'  type="submit" onSubmit={RegisterSubmit}>Submit</button> 
       </form>
        </div>
       

@@ -2,21 +2,23 @@ const User = require("../models/UserSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 
-
  const secretKey = 'sanjay007';
-// register client 
 
+
+
+
+// register client 
 const registeruser = async(req,res)=>{
   const {firstname, lastname , gmail, password}  = req.body;
-  if(!firstname || !lastname || !gmail || !password){
-    res.status(400);
+  if(!(firstname && lastname && gmail && password)){
+    res.status(400).json("All are important");
     console.log(res);
   }
   // if user not a new user
   const userAvaliable = await User.findOne({gmail});
   if(userAvaliable){
-    res.status(400);
-    console.log(res,"email is already there");
+    res.status(401).json("users is already there");;
+    console.log(res,"users is already there");
    
   }
 
@@ -29,13 +31,22 @@ const registeruser = async(req,res)=>{
     gmail,
     password : hashingpassword
   });
+  // save in DB 
   await newuser.save();
   console.log(`user is created ${newuser}`);
-  // res.status(201).json({ message: 'User registered successfully' });
+
+  // generate  the token 
+  const token =  jwt.sign({
+    gmail, id: newuser._id,}, secretKey, 
+    {
+       expiresIn: '2h' 
+    });
+    newuser.token = token
+    newuser.password = undefined
+    res.status(200).json(newuser)
   // senting the msg to the user tha they are registered it
   if(!newuser){
-    res.status(201).json({id: User.id , gmail: User.gmail})
-    // res.status(201).json({ message: 'User registered successfully' });
+    res.status(201).json({ gmail: User.gmail})
   }
   else{
     res.status(400)
@@ -58,8 +69,7 @@ const  loginuser = async(req,res)=>{
   // comparenthe password to hashpassword
 
   if(user && (await bcrypt.compare(password, user.password))){
-  const Token = jwt.sign({  firstname: User.firstname, lastname: User.lastname,  gmail:User.gmail,
-  id: User.id,}, secretKey, { expiresIn: '1h' });// this to token to user to have when they login expiresIn:"1m" //   
+  // const Token = ;// this to token to user to have when they login expiresIn:"1m" //   
     res.status(200).json({Token});
 
   } else{
