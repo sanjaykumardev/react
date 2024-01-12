@@ -1,16 +1,14 @@
+import Homepages from "../components/homepages"
 
 
 
 
 
-
-
-import React from 'react'
 
 const home = () => {
   return (
     <div>
-      
+     <Homepages/>
     </div>
   )
 }
