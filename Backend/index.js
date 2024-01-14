@@ -15,9 +15,9 @@ app.use(express.json());
 // Enable CORS for all origins and methods
 app.use(cors({
   option: ['http://localhost:5173'],
-  credentials: true,
+ 
 }))
-app.use(express.urlencoded({ extended: true }));
+app.use(express);
 app.use(cookieParser);
 
 //routes

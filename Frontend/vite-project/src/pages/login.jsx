@@ -31,18 +31,18 @@ function login() {
     console.log("good",e);
     try {
       const res = await Axios.post("http://localhost:8000/api/user/login", { gmail, password })
-      const token = res.data.Token;
-      console.log('Token:', token);
-      console.error('Axios Error:', error);
+      // const token = res.data.Token;
+      // console.log('Token:', token);
+      console.log('Axios Error:',res);
       setGmail(" ");
       setPassword(" ");
      
       setGmail(res.data.email)
       setPassword(res.data.password)
-      // setError(false)
+      setError(false)
       navigator ( "/")
     } catch (error) {
-      // setError(true)
+      setError(true)
       console.error('Login failed:', error.response.data.error);
     }
   };

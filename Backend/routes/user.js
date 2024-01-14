@@ -5,10 +5,9 @@ const router  = express.Router();
 
 router.post("/register" ,registeruser);
 
-
 router.post("/login" ,loginuser );
 
-router.get("/logout", logoutuser)
+router.delete("/logout", logoutuser)
 
 // router.get("/current" ,privateuser);
 

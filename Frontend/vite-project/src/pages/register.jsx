@@ -8,33 +8,33 @@ import Footer from '../components/Footer'
 
 
 const register = () => {
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
+  const [username, setUsername] = useState('');
   const [gmail, setGmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const navigator= useNavigate();
 
  
+ 
   async function RegisterSubmit(e){
     e.preventDefault(); 
-   
+   console.log(e)
     try {
       const res = await axios.post("http://localhost:8000/api/user/register", {
-        firstname,
-        lastname,
+        username,
         gmail,
         password,
         
       });
+      console.log('Username:', username);
+      console.log('Email:', gmail);
+      console.log('Password:', password);
       console.log(res)
-      // setFirstname(" ");
-      // setLastname(" ");
-      // setGmail(" ");
-      // setPassword(" ");
+      setUsername(" ")
+      setGmail(" ");
+      setPassword(" ");
 
-      setFirstname(res.data.firstname);
-      setLastname(res.data.lastname);
+     setUsername(res.data.username);
       setGmail(res.data.gmail);
       setPassword(res.data.password);
       setError(false);
@@ -51,45 +51,46 @@ const register = () => {
     
     <div >
        <Navbar2/>
-       <div >
-         <h3 className='test-6xl text-red-500 text-center'>Register</h3>
+       <div  >
+         <h3 className='test-6xl text-red-500 '>Register</h3>
        </div>
-       <div className=' display-flex justify-center '>
-       <form  >
-        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-          First Name:
-          <input type="text" className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-200px p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder=''value={firstname} onChange={(e) => setFirstname(e.target.value)} />
-        </label>
-        <br />
-        <label className="block mb-2 text-sm font-medium text-gray-900 " >
-          Last Name:
-          <input   className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-200px p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='' type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} />
-        </label>
-        <br />
-        <label  className="block mb-2 text-sm font-medium text-gray-900 ">
-          Gmail:
-          <input className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-200px p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' type="text" placeholder='' value={gmail} onChange={(e) => setGmail(e.target.value)} />
-        </label>
-        <br />
-        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-          Password:
-          <input className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-200px p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' type="password" placeholder='' value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <button className=' bg-black  text-white'  type="submit" onClick={RegisterSubmit}>Submit</button> 
-      </form>
-       </div>
-      
+       <div className='flex justify-center'>
+     
+       <label htmlFor="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        value={username}
+        placeholder="Enter your username"
+        onChange={(e) => setUsername(e.target.value)}
+      />
 
-      {error && <p> register succfully </p>}
-      <Footer/>
+      <label htmlFor="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        value={gmail}
+        placeholder="Enter your email"
+        onChange={(e) => setGmail(e.target.value)}
+      />
+
+      <label htmlFor="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        placeholder="Enter your password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button className='' onClick={register}>Register</button>
+    </div>
+     <Footer/>
     </div>
   );
 };
 
 export default register;
-
-
 
 
 
